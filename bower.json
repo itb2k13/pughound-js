@@ -1,0 +1,12 @@
+{
+  "name": "jquery-pughound",
+  "version": "1.0.0",
+  "main": "jquery-pughound.js",
+  "dependencies": {
+    "jquery": ">= 1.6"
+  },
+  "ignore": [
+    "example.html",
+    "CONTRIBUTING.md"
+  ]
+}
