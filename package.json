@@ -1,0 +1,32 @@
+{
+  "name": "pughound-js",
+  "title": "PugHound",
+  "description": "A simplistic jQuery plugin for rendering suggestive search results from a remote data source",
+  "version": "1.0.0",
+  "main": "pughound-js.js",
+  "homepage": "https://github.com/itb2k13/pughound-js",
+  "author": {
+    "name": "Stephen Smith",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itb2k13/pughound-js.git"
+  },
+  "keywords": [
+    "jquery",
+    "javascript",
+    "browser",
+    "library",
+	"search",
+	"suggestive"
+  ],
+  "bugs": {
+    "url": "https://github.com/itb2k13/pughound-js/issues"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "commitplease": {}
+}
