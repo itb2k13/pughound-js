@@ -1,3 +1,6 @@
+// A simplistic plugin for rendering suggestive search results from a remote data source
+// https://github.com/itb2k13/pughound-js
+// Version: v1.0.0
 /*
  Pug-Hound - component based jQuery Plugin
  A simplistic plugin for rendering suggestive search results from a remote data source
