@@ -49,13 +49,15 @@
 		plugin.namespace = 'pughound';
 		plugin.uniqueid = Math.random().toString(36).slice(2);
 		plugin.closeresultevents = ['keydown','mousedown','pointerdown'];
-		
+		plugin.reconfigure = function(o){$.extend(plugin.settings, o);}
+			
 		$int = function(s){return parseInt(s);}
 		$bool = function(s){return parseBool(s);}
 		$cs = function(s){return '.' + plugin.namespace + s;}
 		$ns = function(s){return plugin.namespace + s;}		
 		$log = function(o){console.log(o);};
 		
+	
 		// INITIALIZE
 		plugin.init = function () {
 			plugin.settings = $.extend({}, defaults, options);
@@ -91,7 +93,7 @@
 		plugin.enc = function(url){return encodeURIComponent(url);}
 		plugin.emptyterm = function(){if(plugin.cfg('closeonemptyterm')){plugin.hidecontainer();}};		
 		plugin.searchterm = function(){return plugin.element.val().trim();}
-		plugin.highlight = function (text, term) {return text.replace(new RegExp("(" + plugin.preg_quote(term) + ")", 'gi'), '<span class="pughound-highlight">$1</span>');};
+		plugin.highlight = function (text, term) {if(!text){return '';} return text.replace(new RegExp("(" + plugin.preg_quote(term) + ")", 'gi'), '<span class="pughound-highlight">$1</span>');};
 		plugin.setcontainer = function(d){$(d).insertAfter(plugin.element);$(d).on('keydown',function(e){plugin.movefocus(e);});};
 		plugin.removecontainer = function(){plugin.findcontainer().remove();};
 		plugin.destroy = function () {};	
@@ -185,6 +187,7 @@
 					var plugin = new $.pughound(this, options);
 					$(this).data('pughound', plugin);
 				}
+				else{$(this).data('pughound').reconfigure(options);}
 			} else if ($(this).data('pughound')[options]) {
 				$(this).data('pughound')[options].apply(this, Array.prototype.slice.call(arguments, 1));
 			} else {
@@ -210,13 +213,13 @@ $(function () {
 		autocomplete : 'off',
 		autofocus : true,
 		settextonclick : true,
-		remotesrc : 'http://localhost:4462/schema/search/listed?term={0}', 
+		remotesrc : '', 
 		resultstoshow : 12, 
 		showcounts : true,
 		countformat : '({0})',
 		ignorekeycodes : [27, 39, 40, 32, 37, 38, 9, 17, 18, 13],
-		mapping : function(n,i){return {count : n.CountForDisplay, text : n.Presentation, url : n.CatalogQueryString}; },
-		urlformatting : function(url){return '/used-equipment-results?' + url;} //window.location.href.split('?')[0] + '?' + item.url;
+		mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url}; },
+		urlformatting : function(url){return url;} //window.location.href.split('?')[0] + '?' + item.url;
 	};
 	
 	$('.pughound').pughound(options);
