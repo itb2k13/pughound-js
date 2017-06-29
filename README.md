@@ -20,7 +20,7 @@ apply the class 'pughound' to a target input text element
 <input type="text" id="keyword_search" name="keyword_search" class="pughound" placeholder="Search for things..." />
 ```
 
-## simple
+## configure it (biggly simple)
 ```
     $(document).ready(function () {
 
@@ -35,7 +35,7 @@ apply the class 'pughound' to a target input text element
     });
 ```
 
-## less simple
+## configure it (lessly simple)
 ```xml
 	$(document).ready(function () {
 
