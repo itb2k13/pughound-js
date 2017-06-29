@@ -1,6 +1,11 @@
 # pughound-js
 A simplistic plugin for rendering suggestive search results from a remote data source
 
+# requirements (assumed referenced in your project somewhere)
+
+jQuery >= v1.6
+jQuery-Throttle-Debounce >= v1.1
+
 # how to use
 
 ## reference it
