@@ -66,6 +66,19 @@ apply the class 'pughound' to a target input text element
 ```
 # config options
 
+## most important
+
+### remotesrc
+the url from which results will be obtained (see section 'Remote Sources' further down)
+
+### mapping
+allows a custom JS function to be defined so that remote data sources can be mappend into an object structure that pughound understands. (see section 'Remote Sources' further down)
+
+### urlformatting
+allows customization of the result-set hrefs (see section 'Remote Sources' further down)
+
+## least important
+
 ### customclass
 each pughound element will be given this class allowing for CSS style differentiation when multiple instances of the pughound targets appear on the same page
 
@@ -99,3 +112,14 @@ attemps to force the browser to auto-focus the target element upon page load. no
 ### settextonclick
 upon the user clicking an element in the result-set, this setting determines whether the target element should recieve the full href text of the clicked element.
 
+### resultstoshow
+how many results from the remote data source to show in the result-set
+
+### showcounts
+whether to show the counts returned by the remote data source (see more on the 'Remote Sources' further below)
+
+### countformat
+if counts are shown, allows customization of the presentation of the number: e.g. (50) or [50] or -50-
+
+### ignorekeycodes
+prevents a remote call if the keydown keycode exists in the defined list. prevents CTRL, ALT, SHIFT from triggering unwanted calls.
