@@ -1,8 +1,11 @@
 # pughound-js
 A simplistic plugin for rendering suggestive search results from a remote data source
 
+# why ?
+Because other implementations are annoying, overly complex and didn't have all the options required for the destination application
+
 # requirements 
-assumed referenced in your project somewhere:
+assumed referenced in the destination project somewhere:
 
 - jQuery >= v1.6
 - jQuery-Throttle-Debounce >= v1.1 (only required when you wish to make use of the input debounce feature)
@@ -11,7 +14,9 @@ assumed referenced in your project somewhere:
 
 ## reference it
 
-check for the most recent version and include the script tags below noting to replace the @pughound_ver with latest 
+check for the most recent release version within this repo and include the script tags below noting to replace the @pughound_ver with latest. 
+
+the jsDelivr CDN picks up releases directly from this repo.
 
 ```xml
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
