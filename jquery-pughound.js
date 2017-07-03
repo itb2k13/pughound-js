@@ -1,10 +1,11 @@
 // A simplistic plugin for rendering suggestive search results from a remote data source
 // https://github.com/itb2k13/pughound-js
-// Version: v1.0.1
+// Version: v1.0.3
 /*
  Pug-Hound - component based jQuery Plugin
  A simplistic plugin for rendering suggestive search results from a remote data source
  version 1.0, June 15 2017
+ version 1.0.3 July 03 2017
  by Steph Smith
 
  The MIT License (MIT)
@@ -31,8 +32,29 @@
 
 (function($) {
 	$.pughound = function (element, options) {
-
-		var defaults = {prefix: 'pughound_'};	
+		
+		var defaults = {
+			customclass : '',
+			debounce : 250, 
+			minchars : 3, 
+			fadespeed : 160, 
+			highlightsearch : true, 
+			closeonemptyterm : true, 
+			closeonescape : true, 
+			showonfocus : true,
+			loopsaround : true,
+			autocomplete : 'off',
+			autofocus : true,
+			settextonclick : true,
+			remotesrc : '', 
+			resultstoshow : 12, 
+			showcounts : true,
+			countformat : '({0})',
+			ignorekeycodes : [27, 39, 40, 32, 37, 38, 9, 17, 18, 13],
+			mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url}; },
+			urlformatting : function(url){return url;} //window.location.href.split('?')[0] + '?' + item.url;
+		};
+		
 		var plugin = this;plugin.settings = {};
 		
 		String.prototype.rpl = function (s) {return this.replace('{0}',s);};
@@ -50,13 +72,14 @@
 		plugin.uniqueid = Math.random().toString(36).slice(2);
 		plugin.closeresultevents = ['keydown','mousedown','pointerdown'];
 		plugin.reconfigure = function(o){$.extend(plugin.settings, o);}
-			
+	
 		$int = function(s){return parseInt(s);}
 		$bool = function(s){return parseBool(s);}
 		$cs = function(s){return '.' + plugin.namespace + s;}
 		$ns = function(s){return plugin.namespace + s;}		
 		$log = function(o){console.log(o);};
-		
+		$csreg = function(){ return [$cs(''),$cs('-results-container'),$cs('-list'),$cs('-list-item'),$cs('-link'),$cs('-text'),$cs('-highlight'),$cs('-counter')].join(',');}
+				
 	
 		// INITIALIZE
 		plugin.init = function () {
@@ -105,7 +128,7 @@
 		plugin.preg_quote = function (str) { return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1"); }
 		plugin.tryhide = function(event){if((event.keyCode==plugin.esc && plugin.cfg('closeonescape')) || (event.which == 1 && plugin.isnottarget(event))){plugin.hidecontainer();}};
 		plugin.tryshow = function(event){if(plugin.cfg('showonfocus')){plugin.showcontainer();}};
-		plugin.istarget = function(event){if($(event.target).is(".pughound,.pughound-text")){return true;}}
+		plugin.istarget = function(event){if($(event.target).is($csreg())){return true;}}
 		plugin.isnottarget = function(event){return !plugin.istarget(event);}
 		plugin.hidecontainer = function(){plugin.findcontainer().fadeOut(plugin.cfg('fadespeed',$int));}
 		plugin.showcontainer = function(){plugin.findcontainer().fadeIn(plugin.cfg('fadespeed',$int));}
@@ -200,27 +223,6 @@
 
 $(function () {
 	
-	var options = {
-		customclass : '',
-		debounce : 250, 
-		minchars : 3, 
-		fadespeed : 160, 
-		highlightsearch : true, 
-		closeonemptyterm : true, 
-		closeonescape : true, 
-		showonfocus : true,
-		loopsaround : true,
-		autocomplete : 'off',
-		autofocus : true,
-		settextonclick : true,
-		remotesrc : '', 
-		resultstoshow : 12, 
-		showcounts : true,
-		countformat : '({0})',
-		ignorekeycodes : [27, 39, 40, 32, 37, 38, 9, 17, 18, 13],
-		mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url}; },
-		urlformatting : function(url){return url;} //window.location.href.split('?')[0] + '?' + item.url;
-	};
+	$('.pughound').pughound({});
 	
-	$('.pughound').pughound(options);
 });
