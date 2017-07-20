@@ -58,6 +58,7 @@ apply the class 'pughound' to a target input text element
 			highlightsearch : true, 
 			closeonemptyterm : true, 
 			closeonescape : true, 
+			closeonlinkclicked : false,
 			showonfocus : true,
 			loopsaround : true,
 			autocomplete : 'off',
@@ -108,6 +109,9 @@ whether the results should highlight the search term if found within the result 
 ### closeonescape
 whether the results container should close on user pressing the ESCAPE key
 
+### closeonlinkclicked
+whether the results container should close when one of the search results is clicked
+
 ### showonfocus
 whether the results container will re-show itself if the target element loses and re-gains focus
 
@@ -122,6 +126,8 @@ attemps to force the browser to auto-focus the target element upon page load. no
 
 ### settextonclick
 upon the user clicking an element in the result-set, this setting determines whether the target element should recieve the full href text of the clicked element.
+
+triggers both jQuery events in this order: 'change' and 'input'
 
 ### resultstoshow
 how many results from the remote data source to show in the result-set
