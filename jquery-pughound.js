@@ -1,11 +1,12 @@
 // A simplistic plugin for rendering suggestive search results from a remote data source
 // https://github.com/itb2k13/pughound-js
-// Version: v1.0.3
+// Version: v1.0.4
 /*
  Pug-Hound - component based jQuery Plugin
  A simplistic plugin for rendering suggestive search results from a remote data source
  version 1.0, June 15 2017
  version 1.0.3 July 03 2017
+  version 1.0.4 July 20 2017
  by Steph Smith
 
  The MIT License (MIT)
@@ -41,6 +42,7 @@
 			highlightsearch : true, 
 			closeonemptyterm : true, 
 			closeonescape : true, 
+			closeonlinkclicked : false,
 			showonfocus : true,
 			loopsaround : true,
 			autocomplete : 'off',
@@ -135,7 +137,7 @@
 		plugin.findcontainer = function(){return plugin.element.next($cs('-results-container'));}
 		plugin.mapdata = function(data){if (plugin.cfg('mapping')){return jQuery.map(data,plugin.cfg('mapping'))}else{return data;}}
 		plugin.isstring = function(o){return typeof o === 'string' || o instanceof String;}
-		plugin.linkclicked = function(event){if(plugin.cfg('settextonclick',$bool)){plugin.element.val(plugin.linktext(event));}}
+		plugin.linkclicked = function(event){if(plugin.cfg('settextonclick',$bool)){plugin.element.val(plugin.linktext(event));plugin.element.trigger('change').trigger('input');}if(plugin.cfg('closeonlinkclicked',$bool)){plugin.hidecontainer();}}
 		plugin.linktext = function(event){return $(event.currentTarget).attr('data-text');}
 		
 		plugin.onresults = function(data){
