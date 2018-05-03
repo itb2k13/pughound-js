@@ -69,8 +69,9 @@ apply the class 'pughound' to a target input text element
 			showcounts : true,
 			countformat : '({0})',
 			ignorekeycodes : [27, 39, 40, 32, 37, 38, 9, 17, 18, 13],
-			mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url}; },
-			urlformatting : function(url){return url;} //window.location.href.split('?')[0] + '?' + item.url;
+			mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url, id : n.Id }; },
+			urlformatting : function(url){return url;},
+			onanchorclick: function (data) { $('#MyFieldId').val(data.Id); }
 		};
 
 		$('.pughound').pughound(options);
@@ -88,6 +89,9 @@ allows a custom JS function to be defined so that remote data sources can be map
 
 ### urlformatting
 allows customization of the result-set hrefs (see section 'Remote Sources' further down)
+
+### onanchorclick
+allows specification of a custom function which will execute on the anchor click and has access to the items data element
 
 ## least important
 

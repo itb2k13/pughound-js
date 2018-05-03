@@ -6,7 +6,8 @@
  A simplistic plugin for rendering suggestive search results from a remote data source
  version 1.0, June 15 2017
  version 1.0.3 July 03 2017
-  version 1.0.4 July 20 2017
+ version 1.0.4 July 20 2017
+ version 1.0.5 May 03 2018
  by Steph Smith
 
  The MIT License (MIT)
