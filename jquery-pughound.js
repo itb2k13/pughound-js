@@ -54,7 +54,8 @@
 			countformat : '({0})',
 			ignorekeycodes : [27, 39, 40, 32, 37, 38, 9, 17, 18, 13],
 			mapping : function(n,i){return {count : n.Count, text : n.Text, url : n.Url}; },
-			urlformatting : function(url){return url;} //window.location.href.split('?')[0] + '?' + item.url;
+			urlformatting : function(url){return url;}, //window.location.href.split('?')[0] + '?' + item.url;
+			onanchorclick : null
 		};
 		
 		var plugin = this;plugin.settings = {};
@@ -175,7 +176,8 @@
 					counter.innerText = plugin.cfg('countformat').rpl(item.count);
 					counter.classList.add($ns('-counter'));
 					counter.classList.add(plugin.customclass());
-					anchor.href = (item.url.first() == '/') ? item.url : plugin.cfg('urlformatting') ? plugin.cfg('urlformatting')(item.url) : item.url;
+					if(!plugin.cfg('onanchorclick')) {anchor.href = (item.url.first() == '/') ? item.url : plugin.cfg('urlformatting') ? plugin.cfg('urlformatting')(item.url) : item.url;}
+					if(plugin.cfg('onanchorclick'))  {anchor.onclick = function(){plugin.cfg('onanchorclick').call(null, item);};}
 					anchor.appendChild(text);
 					if(plugin.cfg('showcounts',$bool)){anchor.appendChild(counter);}
 					att.value = i;

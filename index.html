@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Suggestive Search Testing</title>
+	<meta name="description" content="Suggestive Search Testing">
+	<meta name="author" content="SitePoint">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+	<script type="text/javascript" src="./jquery-pughound.js"></script>
+	  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel='stylesheet' type='text/css' />
+	<link href="./jquery-pughound.css" rel='stylesheet' type='text/css' />
+	<style>
+	#centered {position: absolute;width: 500px;height: 80px;z-index: 15;top: 50%;left: 50%;margin: -40px 0 0 -250px;}
+	</style>
+		
+</head>
+
+<body style="background:lightblue;">
+
+  <div id="centered">
+	<span id="target">abc</span>
+	<input autofocus type="text" style="height:100%;font-size:20px;" class="form form-control pughound-test" value="" />	
+  </div>  
+  
+	<script>
+
+		$(document).ready(function () {
+
+			var options = {
+				remotesrc: 'https://jsonplaceholder.typicode.com/posts?term={0}',
+				showcounts: false,
+				closeonlinkclicked :true,
+				resultstoshow: 5,
+				fadespeed: 0,
+				autofocus : false,
+				mapping: function (n, i) { return { count: 0, text: n.title, url: n.body, id : n.id }; },
+				urlformatting: function (url) { return url ;},
+				onanchorclick : function(data) {$('#target').text(data.id);}
+			};
+		
+			setInterval(function () {
+				$('.pughound-test').pughound(options);
+			}, 1000);
+
+		});	
+		
+	</script>
+	
+</body>
+</html>

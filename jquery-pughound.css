@@ -1,6 +1,6 @@
 .pughound-results-container{position:absolute;z-index:9999;box-sizing: border-box;font-size:20px;}
 .pughound-list{margin:0;padding:0;list-style:none;}
-.pughound-list-item{margin:0;padding:0;}
+.pughound-list-item{margin:0;padding:0;cursor:pointer;}
 .pughound-link{display:block;padding:0;margin:0;}
 .pughound-link:hover,.pughound-link:focus{background:#007AC3;color:white;}
 .pughound-text{display:inline-block;}
