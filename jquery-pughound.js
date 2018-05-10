@@ -178,7 +178,7 @@
 					counter.classList.add($ns('-counter'));
 					counter.classList.add(plugin.customclass());
 					if(!plugin.cfg('onanchorclick')) {anchor.href = (item.url.first() == '/') ? item.url : plugin.cfg('urlformatting') ? plugin.cfg('urlformatting')(item.url) : item.url;}
-					if(plugin.cfg('onanchorclick'))  {anchor.onclick = function(){plugin.cfg('onanchorclick').call(null, item);};}
+					if(plugin.cfg('onanchorclick'))  {anchor.href = '#'; anchor.onclick = function(){plugin.cfg('onanchorclick').call(null, item); return false;}}
 					anchor.appendChild(text);
 					if(plugin.cfg('showcounts',$bool)){anchor.appendChild(counter);}
 					att.value = i;
