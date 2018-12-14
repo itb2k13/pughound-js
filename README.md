@@ -16,7 +16,7 @@ assumed referenced in the destination project somewhere:
 
 check for the most recent release version within this repo and include the script tags below noting to replace the @pughound_ver with latest. 
 
-the jsDelivr CDN picks up releases directly from this repo.
+the jsDelivr CDN picks up releases directly from this repo. [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/gh/itb2k13/pughound-js/badge)](https://www.jsdelivr.com/package/gh/itb2k13/pughound-js)
 
 ```xml
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
